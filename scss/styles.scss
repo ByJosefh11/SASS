@@ -1,0 +1,79 @@
+body {
+    color: red;
+    
+    
+    p { 
+        /* Primer selector anidado */
+        color:aqua}
+}
+
+$main-color:#17202A;
+$num-col:5;
+
+table {
+/* Primera variable con color */
+    background-color: $main-color; /* 
+       
+/* Segunda variable con tamaño */
+/* Segundo selector anidado */
+/* Primer bucle */
+    @for $i from 1 through $num-col{
+        
+        .col-#{$i}{
+            font-size:#{$i}em;
+        }
+    }
+
+}
+
+
+/* Segundo bucle */
+
+$columnainicial: 2; /* Tercera variable */
+$columnafinal:3; /* Cuarta variable */
+@while $columnainicial <= $columnafinal {
+  .col-#{$columnainicial} {
+    background-color: rgb(255, 255, 255);
+  }
+  $columnainicial: $columnainicial + 1;
+}
+
+
+/* Primer mixin */
+@mixin letrasRojas($size){
+    color: red;
+    text-decoration: underline;
+    font-size: #{$size}em;
+}
+
+#p1{
+    @include letrasRojas(1);
+
+}
+
+#p3{
+    @include letrasRojas(2);
+    
+}
+
+@function verficarPorcentaje($n) {
+    @return $n>=0 and $n<=100;
+  }
+
+
+@mixin transparencia($transp_porcentaje){
+    @if(verficarPorcentaje($transp_porcentaje)){
+        opacity: #{100 - $transp_porcentaje}+"%";
+    }@else{
+        opacity: 100%;
+    }
+
+}
+#p2{
+    @include transparencia(75);
+    
+}
+    
+
+
+
